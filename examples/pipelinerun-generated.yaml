@@ -66,8 +66,8 @@ spec:
           - name: source
             workspace: source
         params:
-        - name: IMAGE
-          value: image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/$(context.pipelineRun.name)
+          - name: IMAGE
+            value: image-registry.openshift-image-registry.svc:5000/$(context.pipelineRun.namespace)/$(context.pipelineRun.name)
       # Match since the detected language for this Repository is "go"
       - name: go-golangci-lint
         taskRef:
@@ -76,10 +76,10 @@ spec:
           - name: source
             workspace: source
         params:
-        - name: package
-          value: .
+          - name: package
+            value: .
         runAfter:
-        - go-golang-test
+          - go-golang-test
       # Match since the detected language for this Repository is "go"
       - name: go-golang-test
         taskRef:
@@ -88,10 +88,10 @@ spec:
           - name: source
             workspace: source
         params:
-        - name: package
-          value: .
+          - name: package
+            value: .
         runAfter:
-        - git-clone
+          - git-clone
       # Match since the detected language for this Repository is "shell"
       - name: shell-shellcheck
         taskRef:
@@ -100,23 +100,22 @@ spec:
           - name: shared-workspace
             workspace: source
         params:
-        - name: args
-          value: ["."]
+          - name: args
+            value: ["."]
 
         runAfter:
-        - git-clone
+          - git-clone
   workspaces:
-  - name: source
-    volumeClaimTemplate:
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 1Gi
-  # This workspace will inject secret to help the git-clone task to be able to
-  # checkout the private repositories
-  - name: basic-auth
-    secret:
-      secretName: "{{ git_auth_secret }}"
-
+    - name: source
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+    # This workspace will inject secret to help the git-clone task to be able to
+    # checkout the private repositories
+    - name: basic-auth
+      secret:
+        secretName: "{{ git_auth_secret }}"
