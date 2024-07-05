@@ -1,5 +1,8 @@
 # tkn autogenerate - Generate PipelineRun for [Pipelines-as-Code](https://pipelinesascode.com) automagically 🪄
 
+> [!IMPORTANT]  
+> tkn-autogenerate is an experimental project and is not officially supported by Red Hat.
+
 ## Description
 
 `tkn-autogenerate` will inspect a repository and try to guess which tasks to
@@ -189,11 +192,3 @@ detection.
 ## Copyright
 
 [Apache-2.0](./LICENSE)
-
-## Authors
-
-### Chmouel Boudjnah
-
-- Fediverse - <[@chmouel@chmouel.com](https://fosstodon.org/@chmouel)>
-- Twitter - <[@chmouel](https://twitter.com/chmouel)>
-- Blog - <[https://blog.chmouel.com](https://blog.chmouel.com)>
