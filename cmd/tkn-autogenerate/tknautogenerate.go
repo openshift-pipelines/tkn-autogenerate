@@ -16,7 +16,7 @@ import (
 	"strings"
 
 	"github.com/alecthomas/kong"
-	ag "github.com/chmouel/tkn-autogenerate/pkg/tknautogenerate"
+	ag "github.com/openshift-pipelines/tkn-autogenerate/pkg/tknautogenerate"
 )
 
 var CLI ag.CliStruct

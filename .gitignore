@@ -1,3 +1,2 @@
 vendor/
-autogenerate
-tkn-autogenerate
+bin/

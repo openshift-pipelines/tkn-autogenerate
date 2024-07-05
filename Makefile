@@ -7,10 +7,12 @@ all: lint $(OUTPUT_DIR)/$(NAME)
 mkdir: 
 	@mkdir -p $(OUTPUT_DIR)
 
-$(OUTPUT_DIR)/$(NAME): *.go mkdir
+$(OUTPUT_DIR)/$(NAME): ./cmd/$(NAME)/*.go mkdir
 	@echo "building..."
-	@go build $(FLAGS)  -v -o $@ ./
+	@go build $(FLAGS)  -v -o $@ ./cmd/$(NAME)
 
 lint: $(GOLANGCI_LINT)
 	@echo "linting..."
 	@$(GOLANGCI_LINT) run
+
+.PHONY: lint mkdir all
